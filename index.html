@@ -6,8 +6,10 @@
         <title>Hieroglyph Translator</title>
     </head>    
     <body>
+        
         <div class="name">
             <header>
+                
                 <h1>Hieroglyph Translator</h1>
                 <div class="subtitle">
                     <h2>Translate ur name into Egyptian hieroglyphs</h2>
@@ -22,6 +24,7 @@
             </div>
             <footer>Discover the magnificent language of my ancestors | Made by @Mozmezo</footer>
         </div>
+        
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
             *{
@@ -30,56 +33,79 @@
                 padding:0;
             }
             body{
-                background: radial-gradient(circle, #f0d519, #000000);
+                background: url("./background.jpeg");
+                background-size:cover;
+                background-position:center;
+                background-repeat:no-repeat;
                 justify-content:center;
                 align-items:center;
                 font-family:'Cinzel', sans-serif;
                 display:flex;
-                color:#060606
-                
+                color:#060606;
+                min-height:100vh;
             }
             header{
                 text-align:center;
                 margin-bottom:40px;
             }
             .name{
-                width:100%;
-                padding:30px;
+                width:90%;
+                max-width:750px;
+                padding:40px;
+                height: 100%;
+                background: rgba(10, 7, 5, 0.9);
+                border-radius: 20px;
             }
             h1{
                 font-size:45px;
                 letter-spacing: 7px;
-                color:#080808;
+                color:#e9bd7a;
             }
             h2{
                 letter-spacing: 3px;
-                color:#080808;
+                color:#bca779;
                 font-size:19px;
             }
             textarea{
+                display:block;
                 color:#fff0c5;
                 width:100%;
-                border-radius:10px;
+                border-radius:13px;
                 outline:none;
                 font-size:20px;
-                padding:15px;
+                padding:20px;
                 resize:vertical;
                 min-height:125px;
                 background:#21190d;
+                line-height:1.5;
+                margin-bottom:20px;
+            }
+            .buttons{
+                display:flex;
+                gap:12px;
+                margin-top:21px;
+                flex-wrap:wrap;
             }
             button{
                 flex:1;
                 padding:15px;
-                font-size:13px;
+                font-size:16px;
                 cursor:pointer;
-                border-radius:10px;
+                border-radius:13px;
                 font-weight:bold;
-
+                background:linear-gradient(135deg, #e9bd7a, #bca779);
+                border: none;
+                color: #060606;
+                min-width: 120px;
+                transition:0.3s;
+                font-family: 'Cinzel', sans-serif;
             }
             footer{
                 text-align:center;
                 margin-top:40px;
                 font-size:13px;
+                color:#806b45;
+                font-family: 'Cinzel', sans-serif;
             }
 
         </style>
