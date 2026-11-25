@@ -22,6 +22,7 @@
                 <button onclick="copyText()">Copy</button>
                 <button onclick="clearText()">Clear</button>
             </div>
+            <p id="status"></p>
             <footer>Discover the magnificent language of my ancestors | Made by @Mozmezo</footer>
         </div>
         
@@ -100,6 +101,13 @@
                 transition:0.3s;
                 font-family: 'Cinzel', sans-serif;
             }
+            #status{
+                text-align:center;
+                color:#e9bd7a;
+                margin-top:18px;
+                min-height:20px;
+                font-size:18px;
+            }
             footer{
                 text-align:center;
                 margin-top:40px;
@@ -138,19 +146,51 @@
                 Y:"𓇌",
                 Z:"𓊃"
             };
+            function beep(frequency=700,duration=100){
+                const audio=new AudioContext();
+                const oscillator=audio.createOscillator();
+                const volume=audio.createGain();
+                oscillator.type="sine";
+                oscillator.frequency.value=frequency;
+                volume.gain.value=0.1;
+                oscillator.connect(volume);
+                volume.connect(audio.destination);
+                oscillator.start();
+                oscillator.stop(audio.currentTime+duration/1000);
+                oscillator.onended=()=>audio.close();
+            }
             function translateText(){
                 const text=document.getElementById("input").value.toUpperCase();
                 let hieroghlyphic="";
                 for(let char of text){
-                    if(char===""){
-                        hieroghlyphic+="";
+                    if(char===" "){
+                        hieroghlyphic+="  ";
                     }else if(char==="\n"){
-                        hieroghlypic+="\n";
-                    }else if(characcters[char])
+                        hieroghlyphic+="\n";
+                    }else if(characters[char])
                     {hieroghlyphic+=characters[char];}
                     else{hieroghlyphic+=char;}
                 }
-                document.getElementById("output").textContent= hieroghlyphic || "ur heiroghlyphic will appear here";
+                document.getElementById("output").value= hieroghlyphic || "ur heiroghlyphic will appear here";
+                beep(800,120);
+            }
+            async function copyText(){
+                const hieroghlyphic =document.getElementById("output").value;
+                if(!hieroghlyphic || hieroghlyphic.includes("ur hieroghlyphic")) return;
+                try{
+                    await navigator.clipboard.writeText(hieroghlyphic);
+                    alert("Copied to clipboard!");
+                }
+                catch{
+                    alert("copy failed");
+                }
+                beep(1000,120);
+            }
+                function clearText(){
+                document.getElementById("input").value="";
+                document.getElementById("output").value="";
+                beep(600,120);
+                showStatus("Cleared!");
             }
             
         </script>
