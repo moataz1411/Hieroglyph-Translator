@@ -21,13 +21,18 @@
                 <button onclick="translateText()">let's Translate</button>
                 <button onclick="copyText()">Copy</button>
                 <button onclick="clearText()">Clear</button>
+                <button onclick="swapText()">Swap to hieroglyphs</button>
             </div>
-            <p id="status"></p>
+            <div class="alphabet">
+                <h2>Hieroglyphic Alphabet</h2>
+                <img src="./alphabet.png" alt="Hieroglyphic Alphabet">
+            </div>
             <footer>Discover the magnificent language of my ancestors | Made by @Mozmezo</footer>
         </div>
         
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap');
             *{
                 box-sizing:border-box;
                 margin:0;
@@ -101,12 +106,21 @@
                 transition:0.3s;
                 font-family: 'Cinzel', sans-serif;
             }
-            #status{
+            .alphabet{
+                margin-top:35px;
                 text-align:center;
+            }
+            .alphabet h2{
+                margin-bottom:20px;
                 color:#e9bd7a;
-                margin-top:18px;
-                min-height:20px;
-                font-size:18px;
+                font-size:25px;
+                font-family:'Noto Sans Egyptian Hieroglyphs', sans-serif;
+            }
+            .alphabet img{
+                width:100%;
+                max-width:600px;
+                height:auto;
+                border-radius:13px;
             }
             footer{
                 text-align:center;
@@ -146,6 +160,8 @@
                 Y:"𓇌",
                 Z:"𓊃"
             };
+            const reverseCharacters = Object.fromEntries(Object.entries(characters).map(([key, value]) => [value, key]));
+
             function beep(frequency=700,duration=100){
                 const audio=new AudioContext();
                 const oscillator=audio.createOscillator();
@@ -167,12 +183,26 @@
                         hieroghlyphic+="  ";
                     }else if(char==="\n"){
                         hieroghlyphic+="\n";
+                    }else if(reverseCharacters[char]){
+                        hieroghlyphic+=reverseCharacters[char];
                     }else if(characters[char])
                     {hieroghlyphic+=characters[char];}
                     else{hieroghlyphic+=char;}
+                    
                 }
                 document.getElementById("output").value= hieroghlyphic || "ur heiroghlyphic will appear here";
                 beep(800,120);
+            }
+            function swapText(){
+                const input=document.getElementById("input");
+                const output=document.getElementById("output");
+                const temp=input.value;
+                input.value=output.value;
+                output.value=temp;
+                const tempPlaceholder=input.placeholder;
+                input.placeholder=output.placeholder;
+                output.placeholder=tempPlaceholder;
+                swapped=!swapped;
             }
             async function copyText(){
                 const hieroghlyphic =document.getElementById("output").value;
