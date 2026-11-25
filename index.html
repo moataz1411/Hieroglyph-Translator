@@ -11,14 +11,78 @@
                 <h1>Hieroglyph Translator</h1>
                 <div class="subtitle">
                     <h2>Translate ur name into Egyptian hieroglyphs</h2>
+                </div>
             </header>
             <textarea id="input" placeholder="What do u want to turn into hieroglyphs"></textarea>
-            <div class="output" id="output">ur hieroglyphic will appear here </div>
+            <textarea id="output" placeholder="ur hieroglyphic will appear here"></textarea>
             <div class="buttons">
                 <button onclick="translateText()">let's Translate</button>
                 <button onclick="copyText()">Copy</button>
                 <button onclick="clearText()">Clear</button>
             </div>
             <footer>Discover the magnificent language of my ancestors | Made by @Mozmezo</footer>
+        </div>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0;
+            }
+            body{
+                background: radial-gradient(circle, #f0d519, #000000);
+                justify-content:center;
+                align-items:center;
+                font-family:'Cinzel', sans-serif;
+                display:flex;
+                color:#060606
+                
+            }
+            header{
+                text-align:center;
+                margin-bottom:40px;
+            }
+            .name{
+                width:100%;
+                padding:30px;
+            }
+            h1{
+                font-size:45px;
+                letter-spacing: 7px;
+                color:#080808;
+            }
+            h2{
+                letter-spacing: 3px;
+                color:#080808;
+                font-size:19px;
+            }
+            textarea{
+                color:#fff0c5;
+                width:100%;
+                border-radius:10px;
+                outline:none;
+                font-size:20px;
+                padding:15px;
+                resize:vertical;
+                min-height:125px;
+                background:#21190d;
+            }
+            button{
+                flex:1;
+                padding:15px;
+                font-size:13px;
+                cursor:pointer;
+                border-radius:10px;
+                font-weight:bold;
+
+            }
+            footer{
+                text-align:center;
+                margin-top:40px;
+                font-size:13px;
+            }
+
+        </style>
+
     </body>
     </html>
